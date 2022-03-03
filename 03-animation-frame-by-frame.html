@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="id=edge" />
+    <title>Interactive Web</title>
+    <style>
+      @keyframes spaceship-ani {
+        /* 0%와 동일 */
+        /* from {
+        } */
+
+        /* 100%와 동일 */
+        to {
+          /* 원래 0 0 -> -2550px 0 으로 변경됨 */
+          background-position: -2550px 0;
+        }
+      }
+
+      body {
+        background: #222;
+      }
+
+      .spaceship {
+        width: 150px;
+        height: 150px;
+        background: url('images/sprite_spaceship.png') no-repeat 0 0 / auto 150px;
+        /* 애니메이션 처리의 단계를 나눔 */
+        /* animation-timing-function: steps(나눌단계수); */
+        animation: spaceship-ani 2s infinite steps(17);
+      }
+
+      .spaceship:hover {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="spaceship"></div>
+  </body>
+</html>
