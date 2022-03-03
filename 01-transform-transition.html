@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="id=edge" />
+    <title>Interactive Web</title>
+    <style>
+      .box-container {
+        display: flex;
+      }
+      .box {
+        width: 100px;
+        /* auto일때는 transition 적용 안 됨 */
+        /* width: auto; */
+        height: 100px;
+        border: 2px solid black;
+        background: rgba(255, 255, 0, 0.7);
+
+        /* !!트랜지션: 속성 값(숫자일때만)의 변화가 있을 때 중간과정을 표현 */
+        /* transition: 지속시간; */
+        /* 예) transform이 적용되는 시간 */
+        /* transition: 1s; */
+
+        /* transition: 지속시간 가속도함수  */
+        /* transition: 1s cubic-bezier(0.43, 0.05, 0.05, 1.92); */
+
+        /* transition: 지속시간 지연시간;  */
+        /* transition: 1s 2s; */
+
+        /* 어떤 트랜지션 이펙트에 적용할지를  선택 */
+        /* transition-property: all; */
+        /* 지속시간 */
+        /* transition-duration: 1s; */
+        /* 가속도 */
+        /* transition-timing-function: ease; */
+        /* 트랜지션 지연 */
+        /* transition-delay: 0s; */
+
+        transition: 1.5s;
+      }
+      .box:hover {
+        width: 150px;
+        background: red;
+
+        /* 크기 조정 */
+        /* transform: scale(배수) */
+        /* width, height 조정일 때는 레이아웃이 변형됨 */
+        /* transform은 레이아웃은 유지되고 해당 엘리먼트만 변형됨 */
+        /* transform: scale(1.5); */
+
+        /* 회전 */
+        /* transform: rotate(각도deg) */
+
+        /* transform: scale(2) rotate(15deg); */
+
+        /* 비틀기 */
+        /* transform: skew(각도deg); */
+
+        /* transform: skew(30deg); */
+        /* transform: skewY(30deg); */
+        /* transform: skewY(-30deg); */
+
+        /*  이동 */
+        /* transform: translate(x축이동, y축이동); */
+        /* transform: translate(30px, 10px); */
+        /* transform: translateX(30px); */
+        /* transform: translateY(-30px); */
+
+        /* 기준점 변경 */
+        /* transform: scale(1.5); */
+        /* transform: rotate(30deg); */
+        /* transform-origin: x축위치 y축위치; */
+        /* transform-origin: left top; */
+        /* transform-origin: right bottom; */
+        /* transform-origin: 0% 0%;   */
+        /* transform-origin: 100% 100%; */
+        /* transform-origin: 30% 80%; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Transform</h1>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat mollitia
+      sit nesciunt ab, explicabo ratione assumenda ullam ducimus in nobis
+      impedit, velit nisi quidem et hic sapiente recusandae eveniet
+      exercitationem.
+    </p>
+    <div class="box-container">
+      <div class="box">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+      <div class="box">D</div>
+      <div class="box">E</div>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta reiciendis
+      quos eligendi esse hic vero voluptas deleniti quas ratione unde ab facere
+      porro perspiciatis, labore inventore magni consequatur in laborum.
+    </p>
+  </body>
+</html>
