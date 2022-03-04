@@ -1,0 +1,152 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="id=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .stage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background: #333;
+      }
+
+      .door {
+        position: relative;
+        width: 100px;
+        height: 150px;
+        /* outline: 2px dashed yellow; */
+      }
+
+      .door-back {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        overflow: hidden;
+      }
+
+      .ilbuni {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        background-size: contain;
+        /* translate3d 이면 gpu 가속을 좀 더 확실하게 받을 수 있음 */
+        transform: translate3d(100%, 0px, 0px);
+        /* outline: 2px dashed red; */
+        /* transition: duration delay */
+        transition: 0.5s 0.5s;
+      }
+
+      .door:nth-child(1) .ilbuni {
+        background-image: url('./images/ilbuni_0.png');
+      }
+      .door:nth-child(2) .ilbuni {
+        background-image: url('./images/ilbuni_1.png');
+      }
+      .door:nth-child(3) .ilbuni {
+        background-image: url('./images/ilbuni_2.png');
+      }
+
+      .door-body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotateY(0deg);
+        transform-origin: left;
+        transition: 0.5s;
+      }
+
+      .door:nth-child(1) .door-body {
+        background: rgba(255, 0, 0, 0.7);
+      }
+      .door:nth-child(2) .door-body {
+        background: rgba(0, 255, 0, 0.7);
+      }
+      .door:nth-child(3) .door-body {
+        background: rgba(0, 0, 255, 0.7);
+      }
+
+      .door-opened .door-body {
+        transform: perspective(800px) rotateY(-110deg);
+      }
+
+      .door-opened .ilbuni {
+        transform: translate3d(0, 0, 0);
+      }
+
+      /* .door:hover .door-body {
+        transform: perspective(800px) rotateY(-110deg);
+      }
+
+      .door:hover .ilbuni {
+        transform: translate3d(0, 0, 0);
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        const stageElem = document.querySelector('.stage');
+        // 현재 활성화된 아이템을 저장
+        let currentItem;
+
+        // 클릭한 거 열기(부모에 클래스 추가)
+        function activate(elm) {
+          elm.classList.toggle('door-opened');
+          currentItem = elm;
+        }
+
+        function inactivate() {
+          if (currentItem) {
+            currentItem.classList.remove('door-opened');
+          }
+        }
+
+        function doorHandler(e) {
+          // 열려있는 문 닫기
+          inactivate();
+
+          // 문 껍데기를 클릭한거면
+          e.target.classList.contains('door-body') && activate(e.target.parentNode);
+        }
+
+        stageElem.addEventListener('click', doorHandler);
+
+        activate(document.querySelector('.door:first-child'));
+      })();
+    </script>
+  </body>
+</html>
