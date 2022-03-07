@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="id=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .ball {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        /* margin: -15px 0 0 -15px; */
+        border-radius: 50%;
+        background: red;
+        transition: 1s;
+      }
+
+      .ball.end {
+        background: dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+
+    <script>
+      const ballElem = document.querySelector('.ball');
+
+      // 이벤트에 따른 translate 처리
+      // 1. 요소에 transform 디폴트 및 transition 스타일 속성을 추가
+      // 2. 특정 이벤트 발생시에 transform 속성을 부여
+      window.addEventListener('click', function (e) {
+        // console.log(e.clientX, e.clientY);
+        ballElem.style.transform = 'translate(' + (e.clientX - 15) + 'px, ' + (e.clientY - 15) + 'px)';
+      });
+
+      // transition 이벤트에 따른 처리
+      // 1. transition 이벤트 리스너 등록
+      // 2. 클래스를 추가하여 스타일 변경
+      // ballElem.addEventListener('transitionend', function (e) {
+      //   // transition duration
+      //   console.log(e.elapsedTime);
+      //   // 트랜지션이 발생한 속성
+      //   // transform: translate -> background-color
+      //   console.log(e.propertyName);
+      //   ballElem.classList.add('end');
+      // });
+
+      ballElem.addEventListener('transitionstart', function (e) {
+        ballElem.classList.add('end');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="id=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      @keyframes ball-ani {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(200px, 200px);
+        }
+      }
+
+      .ball {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: red;
+        /* animation: ball-ani 1s 3 alternate forwards; */
+      }
+
+      .ball.end {
+        border: 5px solid dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+
+    <script>
+      // 트랜지션: 1회성, 스타일 속성 변경시에 효과 추가
+      // 애니메이션: 반복적 또는 중간단계 존재
+
+      const ballElem = document.querySelector('.ball');
+
+      // 클릭했을 때 애니메이션 재생
+      ballElem.addEventListener('click', function () {
+        ballElem.style.animation = 'ball-ani 1s 3 alternate forwards';
+      });
+
+      // 애니메이션 시작 시에
+      // ballElem.addEventListener('animationstart', function () {
+      //   ballElem.classList.add('end');
+      // });
+
+      // 애니메이션 종료 시에
+      ballElem.addEventListener('animationend', function () {
+        ballElem.classList.add('end');
+      });
+
+      // 첫번째 재생을 제외하고 다음반복 재생시에 이벤트 발생
+      ballElem.addEventListener('animationiteration', function () {
+        console.log('반복');
+      });
+    </script>
+  </body>
+</html>
