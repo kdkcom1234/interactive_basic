@@ -1,0 +1,98 @@
+body {
+  height: 500vw;
+  font-family: 'Apple SD Gothic Neo', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;
+  -webkit-overflow-scrolling: touch;
+  color: #555;
+  background: #fff000;
+}
+
+/* 3d view */
+.world {
+  /* 스크롤 되더라도 world 위치 고정 */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1000px;
+}
+
+/* 캐릭터와 배경을 감싸주는 wrapper */
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+
+.house {
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  transform: translateZ(-500vw);
+}
+.wall {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.wall-left {
+  width: 1000vw;
+  background: #f8f8f8;
+  /* 중앙 기준으로 y축 90도 회전 */
+  /* z축으로 -500만큼 이동(왼쪽으로) */
+  transform: rotateY(90deg) translateZ(-500vw);
+}
+
+.wall-right {
+  width: 1000vw;
+  background: #f8f8f8;
+  /* 중앙 기준으로 y축 90도 회전 */
+  /* z축으로 -500 + 100만큼 이동(왼쪽으로) */
+  transform: rotateY(90deg) translateZ(-400vw);
+}
+
+.wall-front-a {
+  transform: translateZ(300vw);
+}
+.wall-front-b {
+  transform: translateZ(50vw);
+}
+.wall-front-c {
+  transform: translateZ(-200vw);
+}
+.wall-front-d {
+  transform: translateZ(-500vw);
+}
+
+.wall-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.wall-title {
+  font-size: 5rem;
+}
+.progress-bar-con {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 5px;
+  background: #555;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: #00a8ff;
+}
