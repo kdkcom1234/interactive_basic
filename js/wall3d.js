@@ -42,4 +42,6 @@
   // 창 크기 변경 이벤트
   window.addEventListener('resize', resizeHandler);
   resizeHandler();
+
+  new Character();
 })();
