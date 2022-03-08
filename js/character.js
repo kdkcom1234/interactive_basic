@@ -32,4 +32,32 @@ function Character(info) {
   document.querySelector('.stage').appendChild(this.mainElem);
 
   this.mainElem.style.left = info.xPos + '%';
+
+  // 스크롤 중인지 아닌지
+  this.scrollState = 0;
+  this.init();
 }
+
+// prototype: 객체들의 공통 함수, 속성 정의
+// prototype 객체 재정의라서 생성자 함수를 정의 해야함
+Character.prototype = {
+  constructor: Character,
+  init: function () {
+    const self = this;
+    window.addEventListener('scroll', function (e) {
+      // 스크롤이 되면 기존에 등록된 멈춤(running 제거) 타임아웃을 클리어함
+      this.clearTimeout(self.scrollState);
+
+      // 스크롤이 되면 초기 상태이거나, 멈춤(running 제거)이 실행됐을 때만 running을 추가함
+      if (!self.scrollState) {
+        self.mainElem.classList.add('running');
+      }
+
+      // 스크롤이 끝나고 0.1초 후에 running 제거
+      self.scrollState = this.setTimeout(function () {
+        self.scrollState = 0;
+        self.mainElem.classList.remove('running');
+      }, 500);
+    });
+  },
+};

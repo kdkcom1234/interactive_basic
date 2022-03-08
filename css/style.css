@@ -263,6 +263,7 @@ body {
 .character.running .character-leg-left {
   animation: ani-running-leg 0.2s alternate-reverse infinite linear;
 }
+/* 팔은 transform-origin이 반대라 같은 회전각을 움직이면 서로 반대쪽으로 움직임 */
 .character.running .character-arm {
   animation: ani-running-arm 0.2s alternate infinite linear;
 }
